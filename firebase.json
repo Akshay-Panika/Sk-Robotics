@@ -1,0 +1,39 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "sk-robotics",
+          "appId": "1:462620736112:android:6225b20f80ea00065092b5",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "sk-robotics",
+          "configurations": {
+            "android": "1:462620736112:android:6225b20f80ea00065092b5",
+            "ios": "1:462620736112:ios:bd59de7c8e8861855092b5",
+            "macos": "1:462620736112:ios:bd59de7c8e8861855092b5",
+            "web": "1:462620736112:web:ca0438d14c99dd715092b5",
+            "windows": "1:462620736112:web:de8fdb4da18f498a5092b5"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

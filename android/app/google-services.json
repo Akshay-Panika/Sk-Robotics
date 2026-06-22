@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "462620736112",
+    "project_id": "sk-robotics",
+    "storage_bucket": "sk-robotics.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462620736112:android:6225b20f80ea00065092b5",
+        "android_client_info": {
+          "package_name": "com.example.sk_robotics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-P2P-vvt6nCPVuljY9Zz4BP14qUfV28U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
