@@ -36,15 +36,7 @@ class ServicePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children:  [
                         Text(
-                          "A Complete Platform For",
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "Smart IoT And Robotics",
+                          "Innovative IoT, Robotics & Automation Solutions",
                           style: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
@@ -53,7 +45,7 @@ class ServicePage extends StatelessWidget {
                         ),
                         SizedBox(height: 25),
                         Text(
-                          "Manage custom hardware, automated processes, dashboard monitoring and prototype tracking with a complete digital platform.",
+                          "We provide smart technology solutions using IoT, Robotics, Embedded Systems, Automation, and Web Technologies. Our goal is to develop reliable, efficient, and user-friendly systems that solve real-world problems.",
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.grey.shade700,
@@ -179,15 +171,7 @@ class ServicePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children:  [
                         Text(
-                          "A Complete Platform For",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          "Smart IoT And Robotics",
+                          "Innovative IoT, Robotics & Automation Solutions",
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -196,7 +180,7 @@ class ServicePage extends StatelessWidget {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          "Manage custom hardware, automated processes, dashboard monitoring and prototype tracking with a complete digital platform.",
+                          "We provide smart technology solutions using IoT, Robotics, Embedded Systems, Automation, and Web Technologies. Our goal is to develop reliable, efficient, and user-friendly systems that solve real-world problems.",
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey.shade700,
@@ -307,7 +291,7 @@ class ServicePage extends StatelessWidget {
 
       return Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 30,
+          horizontal: 20,
           vertical: 30,
         ),
         child: Column(
@@ -330,15 +314,7 @@ class ServicePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children:  [
                 Text(
-                  "A Complete Platform For",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  "Smart IoT And Robotics",
+                  "Innovative IoT, Robotics & Automation Solutions",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -347,7 +323,7 @@ class ServicePage extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Manage custom hardware, automated processes, dashboard monitoring and prototype tracking with a complete digital platform.",
+                  "We provide smart technology solutions using IoT, Robotics, Embedded Systems, Automation, and Web Technologies. Our goal is to develop reliable, efficient, and user-friendly systems that solve real-world problems.",
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontSize: 14,

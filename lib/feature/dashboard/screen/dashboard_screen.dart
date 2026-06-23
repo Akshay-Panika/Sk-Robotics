@@ -5,10 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 // UTILS IMPORTS
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/screen_helper.dart';
-
-// FEATURE SCREENS IMPORTS (Apne actual file paths ke mutabik unhe import kar lena)
 import '../../buy_now/screen/buy_now_screen.dart';
-import '../../project/screen/project_screen.dart'; // <--- Make sure to create this file
+import '../../project/screen/project_screen.dart';
 import '../../event/screen/event_page.dart';
 import '../../footer/screen/footer_page.dart';
 import '../../gallery/screen/galley_screen.dart';
@@ -75,6 +73,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
           );
         }
       });
+    } else {
+      // If switching views, snap the main outer container back to top
+      _scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
     }
   }
 
@@ -90,55 +95,163 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          _buildFixedNavbar(isDesktop),
-          Expanded(
-            child: _isProjectOpen
-                ? const ProjectScreen() // Renders clean Standalone Project View
-                : _isBuyNowOpen
-                ? const BuyNowScreen() // Renders clean Standalone Buy Now Grid Matrix
-                : CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                /// 1. Home / Landing Section
+      body: CustomScrollView(
+        controller: _scrollController, // Combined into single scroll engine
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: ScreenHelper.isDesktop(context) ? false: true,
+            toolbarHeight:  _isMenuOpen ? 120:60,
+            flexibleSpace: Container(
+              color: AppColor.primary,
+              child: SafeArea(
+                bottom: false,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: AppColor.white,
+                          boxShadow: [
+                            BoxShadow(color: Colors.black.withOpacity(0.05), offset: const Offset(0, 1), blurRadius: 4)
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: isDesktop ? MainAxisAlignment.spaceAround : MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () => _scrollToSection(_homeKey, "Home"),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text(
+                                    "SK ROBOTICS",
+                                    style: TextStyle(color: AppColor.primary, fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 0.5),
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Container(height: 2, width: 110, color: AppColor.primary)
+                                ],
+                              ),
+                            ),
+
+                            if (isDesktop)
+                              Row(
+                                children: [
+                                  _buildDesktopMenuButton("Home", _homeKey),
+                                  _buildDesktopMenuButton("About", _aboutKey),
+                                  _buildDesktopMenuButton("Services", _servicesKey), // Standardized label string
+                                  _buildDesktopMenuButton("Project", _projectKey),
+                                  _buildDesktopMenuButton("Buy Now", _buyNowKey),
+                                ],
+                              ),
+
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (isDesktop) ...[
+                                  ElevatedButton.icon(
+                                    onPressed: _launchWhatsAppGlobal,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColor.primary,
+                                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                    ),
+                                    icon:  FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white, size: 16),
+                                    label: const Text("Join Now", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  OutlinedButton(
+                                    onPressed: () => _scrollToSection(_contactKey, "Contact"),
+                                    style: OutlinedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
+                                      side: const BorderSide(color: AppColor.primary, width: 1),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                    ),
+                                    child: const Text("Contact", style: TextStyle(color: AppColor.primary, fontWeight: FontWeight.bold)),
+                                  ),
+                                ],
+                                if (!isDesktop)
+                                  IconButton(
+                                    onPressed: () => setState(() => _isMenuOpen = !_isMenuOpen),
+                                    icon: Icon(_isMenuOpen ? Icons.close : Icons.menu, color: AppColor.primary),
+                                  ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+
+                      if (!isDesktop && _isMenuOpen)
+                      Container(
+                        width: double.infinity,
+                        color: AppColor.white,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                          child: Row(
+                            children: [
+                              _buildMobileMenuRowButton("Home", _homeKey),
+                              _buildMobileMenuRowButton("About", _aboutKey),
+                              _buildMobileMenuRowButton("Services", _servicesKey),
+                              _buildMobileMenuRowButton("Project", _projectKey),
+                              _buildMobileMenuRowButton("Buy Now", _buyNowKey),
+                              _buildMobileMenuRowButton("Contact", _contactKey),
+                            ],
+                          ),
+                        ),
+                      )
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          // Flattened Conditional UI Rendering Flow
+          if (_isProjectOpen)
+            const SliverToBoxAdapter(child: ProjectScreen())
+          else if (_isBuyNowOpen)
+            const SliverToBoxAdapter(child: BuyNowScreen())
+          else ...[
+              /// 1. Home / Landing Section
+              SliverToBoxAdapter(
+                key: _homeKey,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height - 80,
+                  child: const LandingPage(),
+                ),
+              ),
+
+              /// 2. Brand Partners
+              const SliverToBoxAdapter(child: PartnerPage()),
+              const SliverToBoxAdapter(child: SizedBox(height: 20)),
+
+              /// 3. Mobile Inline Project Card Shortcut
+              if (!isDesktop)
                 SliverToBoxAdapter(
-                  key: _homeKey,
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height - 80,
-                    child: const LandingPage(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: const ProjectCard2(showShadow: true)),
                   ),
                 ),
 
-                /// 2. Brand Partners
-                SliverToBoxAdapter(child: const PartnerPage()),
-                const SliverToBoxAdapter(child: SizedBox(height: 20)),
+              /// 4. About / Events Section
+              SliverToBoxAdapter(key: _aboutKey, child: const EventPage()),
 
-                /// 3. Mobile Inline Project Card Shortcut
-                if (!isDesktop)
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: const ProjectCard(showShadow: true)),
-                    ),
-                  ),
+              /// 5. Services Matrix Track
+              SliverToBoxAdapter(key: _servicesKey, child: const ServicePage()),
+              SliverToBoxAdapter(child: SizedBox(height: ScreenHelper.isMobile(context) ? 40 : 60)),
 
-                /// 4. About / Events Section
-                SliverToBoxAdapter(key: _aboutKey, child: const EventPage()),
+              /// 6. Media Gallery Layout
+              const SliverToBoxAdapter(child: GalleyScreen()),
 
-                /// 5. Services Matrix Track
-                SliverToBoxAdapter(key: _servicesKey, child: const ServicePage()),
-                SliverToBoxAdapter(child: SizedBox(height: ScreenHelper.isMobile(context) ? 40 : 60)),
-
-                /// 6. Media Gallery Layout
-                const SliverToBoxAdapter(child: GalleyScreen()),
-
-                /// 7. Anchor Node Footer
-                SliverToBoxAdapter(key: _contactKey, child: const FooterPage()),
-                const SliverToBoxAdapter(child: SizedBox(height: 40)),
-              ],
-            ),
-          ),
+              /// 7. Anchor Node Footer
+              SliverToBoxAdapter(key: _contactKey, child: const FooterPage()),
+              const SliverToBoxAdapter(child: SizedBox(height: 40)),
+            ],
         ],
       ),
       floatingActionButton: !isDesktop
@@ -151,121 +264,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // ==========================================
-  // NAVIGATION COMPONENT TREE BUILDERS
-  // ==========================================
-  Widget _buildFixedNavbar(bool isDesktop) {
-    return Container(
-      color: AppColor.white,
-      child: SafeArea(
-        bottom: false,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: 65,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: AppColor.white,
-                boxShadow: [
-                  BoxShadow(color: Colors.black.withOpacity(0.05), offset: const Offset(0, 1), blurRadius: 4)
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: isDesktop ? MainAxisAlignment.spaceAround : MainAxisAlignment.spaceBetween,
-                children: [
-                  // Logo Identity Node
-                  GestureDetector(
-                    onTap: () => _scrollToSection(_homeKey, "Home"),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text(
-                          "SK ROBOTICS",
-                          style: TextStyle(color: AppColor.primary, fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 0.5),
-                        ),
-                        const SizedBox(height: 2),
-                        Container(height: 2, width: 110, color: AppColor.primary)
-                      ],
-                    ),
-                  ),
-
-                  // Desktop Horizontal Menu Links
-                  if (isDesktop)
-                    Row(
-                      children: [
-                        _buildDesktopMenuButton("Home", _homeKey),
-                        _buildDesktopMenuButton("About", _aboutKey),
-                        _buildDesktopMenuButton("Service", _servicesKey),
-                        _buildDesktopMenuButton("Project", _projectKey),
-                        _buildDesktopMenuButton("Buy Now", _buyNowKey),
-                      ],
-                    ),
-
-                  // Call To Action (CTA Buttons Layer)
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (isDesktop) ...[
-                        ElevatedButton.icon(
-                          onPressed: _launchWhatsAppGlobal,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.primary,
-                            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
-                          icon: const FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white, size: 16),
-                          label: const Text("Join Now", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                        ),
-                        const SizedBox(width: 12),
-                        OutlinedButton(
-                          onPressed: () => _scrollToSection(_contactKey, "Contact"),
-                          style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
-                            side: const BorderSide(color: AppColor.primary, width: 1),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
-                          child: const Text("Contact", style: TextStyle(color: AppColor.primary, fontWeight: FontWeight.bold)),
-                        ),
-                      ],
-                      if (!isDesktop)
-                        IconButton(
-                          onPressed: () => setState(() => _isMenuOpen = !_isMenuOpen),
-                          icon: Icon(_isMenuOpen ? Icons.close : Icons.menu, color: AppColor.primary),
-                        ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-
-            // Mobile Sliding Overlay Menu Sub-Strip
-            if (!isDesktop && _isMenuOpen)
-              Container(
-                width: double.infinity,
-                color: AppColor.white,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                  child: Row(
-                    children: [
-                      _buildMobileMenuRowButton("Home", _homeKey),
-                      _buildMobileMenuRowButton("About", _aboutKey),
-                      _buildMobileMenuRowButton("Services", _servicesKey),
-                      _buildMobileMenuRowButton("Project", _projectKey),
-                      _buildMobileMenuRowButton("Buy Now", _buyNowKey),
-                      _buildMobileMenuRowButton("Contact", _contactKey),
-                    ],
-                  ),
-                ),
-              )
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildDesktopMenuButton(String title, GlobalKey targetKey) {
     final bool isActive = _activeSection == title;
     return Padding(
@@ -273,9 +271,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: TextButton(
         onPressed: () => _scrollToSection(targetKey, title),
         style: TextButton.styleFrom(
-          foregroundColor: isActive ? AppColor.primary : Colors.grey.shade600,
+          foregroundColor: isActive ? AppColor.primary : Colors.grey.shade900,
         ),
-        child: Text(title, style: TextStyle(fontSize: 15, fontWeight: isActive ? FontWeight.bold : FontWeight.w500)),
+        child: Text(title, style: TextStyle(fontSize: 15, fontWeight: isActive ? FontWeight.bold : FontWeight.w700)),
       ),
     );
   }
@@ -293,7 +291,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           onPressed: () => _scrollToSection(targetKey, title),
           child: Text(
             title,
-            style: TextStyle(color: isActive ? AppColor.primary : Colors.grey.shade700, fontSize: 13.5, fontWeight: isActive ? FontWeight.bold : FontWeight.w600),
+            style: TextStyle(color: isActive ? AppColor.primary : Colors.grey.shade900, fontSize: 13.5, fontWeight: isActive ? FontWeight.bold : FontWeight.w600),
           ),
         ),
       ),

@@ -15,45 +15,80 @@ class _EventPageState extends State<EventPage> {
   int _selectedIndex = 0;
   bool _isBioExpanded = false; // Bio toggle status handle karne ke liye state variable
 
-  final List<Map<String, String>> steps = [
+  final List<Map<String, dynamic>> steps = [
     {
       "title": "IOT Development",
-      "introduction": "Connecting hardware components and microcontrollers to the internet to read ambient sensors, capture environmental datasets, and relay network telemetry data.",
-      "example": "1. Deploying an MQ2 Gas Sensor and DHT11 module on an ESP32 node.\n2. Reading raw analog air quality indices dynamically.\n3. Streaming live telemetry data via lightweight MQTT protocol channels.",
+      "introduction": "Developing intelligent Internet of Things (IoT) solutions using ESP32, sensors, and embedded technologies. These systems are designed for real-time monitoring, data collection, automation, and smart control applications.",
+      "highlights": [
+        "Smart Attendance System using ESP32",
+        "Smart Lighting Autonomous Monitoring System",
+        "IoT Environmental Monitoring System",
+        "Real-Time Sensor Data Processing",
+        "Wireless Monitoring & Control Systems"
+      ],
       "image": "https://picsum.photos/400/300?random=1"
     },
     {
       "title": "Robotic Development",
-      "introduction": "Programming autonomous kinematic devices using embedded logic blocks, spatial mapping engines, and multi-axis hardware motion coordination frameworks.",
-      "example": "1. Calculating real-time Inverse Kinematics structural vectors.\n2. Controlling multi-axis motion paths for a 3-Axis robotic arm.\n3. Driving precise mechanics via PCA9685 PWM multi-servo hardware modules.",
+      "introduction": "Designing and developing robotic systems that combine embedded hardware, sensors, and automation technologies. These projects focus on improving efficiency, accuracy, and intelligent decision-making.",
+      "highlights": [
+        "Autonomous Robotic Systems",
+        "Sensor-Based Navigation",
+        "Obstacle Detection & Avoidance",
+        "Embedded Robotics Control",
+        "Smart Robotics Applications"
+      ],
       "image": "https://picsum.photos/400/300?random=2"
     },
     {
       "title": "Smart Automation",
-      "introduction": "Writing low-latency microcontroller application code to trigger structural event loops, manage thread scheduling, and automate connected edge behaviors.",
-      "example": "1. Allocating dynamic concurrent tasks inside FreeRTOS firmware kernels.\n2. Monitoring continuous environmental thresholds in real time.\n3. Instantly switching high-voltage AC relays when values drop below 20%.",
+      "introduction": "Creating smart automation solutions that reduce manual work and improve operational efficiency. These systems utilize sensors, controllers, and intelligent algorithms for automated decision-making.",
+      "highlights": [
+        "Smart Home Automation",
+        "Automatic Lighting Control",
+        "Device Monitoring Systems",
+        "Intelligent Control Platforms",
+        "Energy-Efficient Automation"
+      ],
       "image": "https://picsum.photos/400/300?random=3"
     },
     {
       "title": "Security Systems",
-      "introduction": "Enforcing ironclad hardware access control barriers through encrypted entry records, cryptographic handshake loops, and structural biometric authentications.",
-      "example": "1. Interfacing an RC522 RFID reader with secure validation lookup arrays.\n2. Detecting structural physical chassis bypass or direct terminal access breaks.\n3. Dispatching encrypted Firebase alerts to remote monitoring clients instantly.",
+      "introduction": "Developing advanced security and monitoring solutions that provide real-time protection, surveillance, and emergency response capabilities for various applications.",
+      "highlights": [
+        "Intrusion Detection Systems",
+        "Smart Security Monitoring",
+        "Sensor-Based Alert Systems",
+        "Emergency Notification Features",
+        "Continuous Surveillance Solutions"
+      ],
       "image": "https://picsum.photos/400/300?random=4"
     },
     {
       "title": "Dashboard Development",
-      "introduction": "Architecting modern analytical frontend platforms to aggregate raw inbound device payloads into intuitive charts and real-time operations interfaces.",
-      "example": "1. Opening robust, persistent full-duplex WebSockets network streams.\n2. Compiling asynchronous payload fragments into reactive state managers.\n3. Populating high-contrast charts with real-time edge network telemetry metrics.",
+      "introduction": "Building modern web-based dashboards for monitoring, visualization, and management of IoT and automation systems. These dashboards provide real-time insights and user-friendly controls.",
+      "highlights": [
+        "ESP32 Web Dashboards",
+        "Real-Time Data Visualization",
+        "Device Management Interfaces",
+        "Analytics & Reporting",
+        "Responsive User Experience"
+      ],
       "image": "https://picsum.photos/400/300?random=5"
     },
     {
       "title": "Fail-Safe System Design",
-      "introduction": "Engineering redundant execution boundaries and continuous hardware loops to preserve strict system availability and handle unexpected software runtime hangs.",
-      "example": "1. Activating system hardware Watchdog Timers (WDT) countdown resets.\n2. Deploying auxiliary isolated solid-state backup battery circuits.\n3. Triggering automated hard reboots to guarantee continuous 24/7 uptime.",
+      "introduction": "Designing reliable fail-safe systems that ensure uninterrupted operation, fault detection, and system recovery during unexpected failures or emergencies.",
+      "highlights": [
+        "Fault Detection Mechanisms",
+        "System Reliability Enhancement",
+        "Emergency Backup Operations",
+        "Safe Shutdown Procedures",
+        "Critical System Protection"
+      ],
       "image": "https://picsum.photos/400/300?random=6"
     },
   ];
-
   final List<String> _EMHA = [
     "ESP32", "ESP8266", "Arduino", "RFID", "OLED Display",
     "Sensors", "Servos", "Motors", "Motor Drivers", "Power Management", "Local Systems"
@@ -73,9 +108,10 @@ class _EventPageState extends State<EventPage> {
       final bool isTablet = ScreenHelper.isTablet(context);
 
       // Bio Description Data Strings Split Setup
-      const String baseBio = "Passionate IoT & Robotics Developer with hands-on experience in designing intelligent embedded systems, autonomous robots, smart automation platforms, security systems and real-time monitoring solutions.";
-      const String dynamicExtendedBio = " Specialized in building production-grade architecture using ESP32/ESP8266 nodes, seamless industrial sensor integration, and efficient micro-firmware optimization. Experienced in deploying low-latency communication networks via MQTT, HTTP, and WebSockets protocols, bridging hardware telemetry directly with real-time reactive dashboards. Driven by creating fail-safe automated environments and scalable edge-computing software frameworks.";
-
+      const String baseBio = "I am ER Shivam Kumar Singh, an Electronics and Communication Engineering student passionate about IoT, Robotics, Embedded Systems, and Automation.\nI develop smart ESP32-based solutions, intelligent monitoring systems, and web dashboards that solve real-world problems through innovation and technology.\n\n";
+      // const String baseBio = "Passionate IoT & Robotics Developer with hands-on experience in designing intelligent embedded systems, autonomous robots, smart automation platforms, security systems and real-time monitoring solutions.";
+      // const String dynamicExtendedBio = " Specialized in building production-grade architecture using ESP32/ESP8266 nodes, seamless industrial sensor integration, and efficient micro-firmware optimization. Experienced in deploying low-latency communication networks via MQTT, HTTP, and WebSockets protocols, bridging hardware telemetry directly with real-time reactive dashboards. Driven by creating fail-safe automated environments and scalable edge-computing software frameworks.";
+       const String dynamicExtendedBio = "Specialization:\nESP32 • ESP8266 • IoT • Robotics • Automation • Web Development\n\nMission:\nBuilding smart, reliable, and innovative technology solutions for the future.";
       return SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(
@@ -154,6 +190,7 @@ class _EventPageState extends State<EventPage> {
   Widget _buildDesktopSplitLayout() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         // Tabs Left Column
         Expanded(
@@ -220,7 +257,7 @@ class _EventPageState extends State<EventPage> {
             duration: const Duration(milliseconds: 300),
             child: Container(
               key: ValueKey<int>(_selectedIndex),
-              padding: const EdgeInsets.all(24),
+              // padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -230,7 +267,12 @@ class _EventPageState extends State<EventPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container( height: 240,child: Center(child: Icon(Icons.image_not_supported_outlined,size: 100,color: Colors.grey.shade300,)),),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(16)
+                    ),
+                    height: 240, child: Center(child: Icon(Icons.image_not_supported_outlined, size: 100, color: Colors.grey.shade400,)),),
                   const SizedBox(height: 20),
                   Text(
                     steps[_selectedIndex]["title"]!,
@@ -254,14 +296,28 @@ class _EventPageState extends State<EventPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Execution Matrix Configuration:",
+                          "Project:", // Title updated
                           style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColor.primary, letterSpacing: 0.5),
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          steps[_selectedIndex]["example"]!,
-                          style: TextStyle(fontSize: 14, color: Colors.grey.shade800, height: 1.6),
-                        ),
+                        ...List.generate((steps[_selectedIndex]["highlights"] as List<String>).length, (i) {
+                          final highlight = steps[_selectedIndex]["highlights"][i];
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 6.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("• ", style: TextStyle(color: AppColor.primary, fontWeight: FontWeight.bold)),
+                                Expanded(
+                                  child: Text(
+                                    highlight,
+                                    style: TextStyle(fontSize: 14, color: Colors.grey.shade800, height: 1.4),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
                       ],
                     ),
                   )
@@ -322,7 +378,12 @@ class _EventPageState extends State<EventPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container( height: 180,child: Center(child: Icon(Icons.image_not_supported_outlined,size: 100,color: Colors.grey.shade300,)),),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(16)
+                ),
+                height: 180, child: Center(child: Icon(Icons.image_not_supported_outlined, size: 100, color: Colors.grey.shade400,)),),
               const SizedBox(height: 16),
               Text(
                 steps[_selectedIndex]["title"]!,
@@ -336,17 +397,41 @@ class _EventPageState extends State<EventPage> {
               const SizedBox(height: 14),
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(12),
+                // padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade50,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey.shade200, width: 0.5),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade100),
                 ),
-                child: Text(
-                  steps[_selectedIndex]["example"]!,
-                  style: TextStyle(fontSize: 13, color: Colors.grey.shade800, height: 1.5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Project:", // Title updated
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColor.primary, letterSpacing: 0.5),
+                    ),
+                    const SizedBox(height: 8),
+                    ...List.generate((steps[_selectedIndex]["highlights"] as List<String>).length, (i) {
+                      final highlight = steps[_selectedIndex]["highlights"][i];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 6.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("• ", style: TextStyle(color: AppColor.primary, fontWeight: FontWeight.bold)),
+                            Expanded(
+                              child: Text(
+                                highlight,
+                                style: TextStyle(fontSize: 14, color: Colors.grey.shade800, height: 1.4),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                  ],
                 ),
-              ),
+              )
             ],
           ),
         )

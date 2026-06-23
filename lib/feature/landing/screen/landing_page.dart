@@ -136,7 +136,7 @@ class LandingPage extends StatelessWidget {
                           /// View Demo - blue filled button
                           ElevatedButton.icon(
                             onPressed: () {},
-                            icon: const Icon(Icons.video_camera_back_outlined,
+                            icon: const FaIcon(FontAwesomeIcons.instagram,
                                 color: Colors.white, size: 18),
                             label: const Text(
                               "View Demo",
@@ -313,7 +313,7 @@ class LandingPage extends StatelessWidget {
                             /// View Demo - blue filled button
                             ElevatedButton.icon(
                               onPressed: () {},
-                              icon: const Icon(Icons.video_camera_back_outlined,
+                              icon: const FaIcon(FontAwesomeIcons.instagram,
                                   color: Colors.white, size: 18),
                               label: const Text(
                                 "View Demo",
@@ -460,7 +460,7 @@ class LandingPage extends StatelessWidget {
                           /// View Demo - blue filled button
                           ElevatedButton.icon(
                             onPressed: () {},
-                            icon: const Icon(Icons.video_camera_back_outlined,
+                            icon: const FaIcon(FontAwesomeIcons.instagram,
                                 color: Colors.white, size: 18),
                             label: const Text(
                               "View Demo",

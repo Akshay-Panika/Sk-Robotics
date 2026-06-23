@@ -13,29 +13,35 @@ class _PartnerPageState extends State<PartnerPage> {
   Timer? _timer;
 
   final List<String> companies = [
-    "Google",
-    "Microsoft",
-    "Amazon",
-    "Infosys",
-    "TCS",
-    "Wipro",
-    "IBM",
+    "Error False",
+    "Zero+",
+    "Suwidhaa",
+    "Ravita Nexus",
+    "Savishkar Mahakoshal"
+  ];
+
+  final List<String> logo = [
+    "assets/logo/errorfalse.jpeg",
+    "",
+    "",
+    "",
+    "assets/logo/savishkar.jpeg"
   ];
 
   @override
   void initState() {
     super.initState();
-
-    _timer = Timer.periodic(const Duration(milliseconds: 30), (_) {
-      if (_controller.hasClients) {
-        double next = _controller.offset + 1;
-
-        if (next >= _controller.position.maxScrollExtent) {
-          _controller.jumpTo(0);
-        } else {
-          _controller.jumpTo(next);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _timer = Timer.periodic(const Duration(milliseconds: 30), (_) {
+        if (mounted && _controller.hasClients) {
+          double next = _controller.offset + 1;
+          if (next >= _controller.position.maxScrollExtent) {
+            _controller.jumpTo(0);
+          } else {
+            _controller.jumpTo(next);
+          }
         }
-      }
+      });
     });
   }
 
@@ -46,50 +52,15 @@ class _PartnerPageState extends State<PartnerPage> {
     super.dispose();
   }
 
-  // FIX: Pulled all the screen-size-dependent values into one place.
-  // Earlier there were only 3 buckets (>=1200, >=900, else) and only
-  // `visibleItems` changed — height/font/margin stayed fixed, so on
-  // small phones the cards looked cramped and text could overflow.
-  // Now there are 4 buckets matching common breakpoints:
-  //   >=1200  -> Desktop
-  //   >=900   -> Tablet landscape / small laptop
-  //   >=600   -> Tablet portrait
-  //   <600    -> Mobile
   _CarouselConfig _getConfig(double screenWidth) {
     if (screenWidth >= 1200) {
-      return const _CarouselConfig(
-        visibleItems: 5,
-        height: 120,
-        fontSize: 18,
-        margin: 8,
-        borderRadius: 12,
-      );
+      return const _CarouselConfig(visibleItems: 7, height: 70, fontSize: 14, margin: 4, borderRadius: 8);
     } else if (screenWidth >= 900) {
-      return const _CarouselConfig(
-        visibleItems: 4,
-        height: 110,
-        fontSize: 16,
-        margin: 8,
-        borderRadius: 12,
-      );
+      return const _CarouselConfig(visibleItems: 5, height: 70, fontSize: 13, margin: 4, borderRadius: 8);
     } else if (screenWidth >= 600) {
-      return const _CarouselConfig(
-        visibleItems: 3,
-        height: 100,
-        fontSize: 15,
-        margin: 6,
-        borderRadius: 10,
-      );
+      return const _CarouselConfig(visibleItems: 4, height: 65, fontSize: 12, margin: 3, borderRadius: 6);
     } else {
-      // Mobile: keep cards big enough to read but only show 2 at a time
-      // so the company name never gets squeezed/clipped.
-      return const _CarouselConfig(
-        visibleItems: 2,
-        height: 90,
-        fontSize: 14,
-        margin: 5,
-        borderRadius: 10,
-      );
+      return const _CarouselConfig(visibleItems: 3, height: 60, fontSize: 11, margin: 3, borderRadius: 6);
     }
   }
 
@@ -97,7 +68,6 @@ class _PartnerPageState extends State<PartnerPage> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final config = _getConfig(screenWidth);
-
     final itemWidth = screenWidth / config.visibleItems;
 
     return SizedBox(
@@ -105,9 +75,11 @@ class _PartnerPageState extends State<PartnerPage> {
       child: ListView.builder(
         controller: _controller,
         scrollDirection: Axis.horizontal,
-        itemCount: companies.length * 20, // infinite feel
+        itemCount: companies.length * 20,
         itemBuilder: (context, index) {
-          final company = companies[index % companies.length];
+          final i = index % companies.length;
+          final company = companies[i];
+          final logoPath = logo[i];
 
           return Container(
             width: itemWidth,
@@ -115,33 +87,39 @@ class _PartnerPageState extends State<PartnerPage> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(config.borderRadius),
-              border: Border.all(
-                color: Colors.grey.shade200,
-              ),
+              border: Border.all(color: Colors.grey.shade300),
               boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
+                BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 4, offset: const Offset(0, 2)),
               ],
             ),
-            child: Center(
-              child: Padding(
-                // FIX: small horizontal padding so longer names
-                // (e.g. "Microsoft") don't touch the card edges on
-                // narrow mobile widths.
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: Text(
-                  company,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: config.fontSize,
-                    fontWeight: FontWeight.w600,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Logo ya Icon display
+                  Padding(
+                    padding: const EdgeInsets.only(right: 4.0),
+                    child: logoPath.isNotEmpty
+                        ? Image.asset(logoPath, height: 30, fit: BoxFit.contain)
+                        : const Icon(Icons.business, size: 18, color: Colors.grey),
                   ),
-                ),
+                  // Text jo ki center mein rahega
+                  Flexible(
+                    child: Text(
+                      company,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Colors.grey.shade700,
+                          fontSize: config.fontSize,
+                          fontWeight: FontWeight.w700
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           );
@@ -151,10 +129,8 @@ class _PartnerPageState extends State<PartnerPage> {
   }
 }
 
-/// Holds all the size-dependent values for one breakpoint, so build()
-/// stays clean and every value scales together instead of independently.
 class _CarouselConfig {
-  final int visibleItems;
+  final double visibleItems;
   final double height;
   final double fontSize;
   final double margin;
@@ -165,6 +141,6 @@ class _CarouselConfig {
     required this.height,
     required this.fontSize,
     required this.margin,
-    required this.borderRadius,
+    required this.borderRadius
   });
 }

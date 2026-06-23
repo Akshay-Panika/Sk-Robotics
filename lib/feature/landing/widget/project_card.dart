@@ -24,6 +24,77 @@ class ProjectCard extends StatelessWidget {
 
   Widget _buildMetricCard(int targetValue, String label) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: showShadow == true ? Colors.grey.shade300: Colors.transparent),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TweenAnimationBuilder<int>(
+            tween: IntTween(begin: 0, end: targetValue),
+            duration: const Duration(milliseconds: 2500),
+            curve: Curves.easeOutQuad,
+            builder: (context, value, child) {
+              return Text(
+                "$value+",
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1E293B),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 2),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey.shade900,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class ProjectCard2 extends StatelessWidget {
+  final bool? showShadow;
+
+  const ProjectCard2({
+    super.key,
+    this.showShadow, // Default true rakha hai
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 12,
+      children: [
+        Row(
+          spacing: 12,
+          children: [
+            Expanded(child: _buildMetricCard(15, "Projects")),
+            Expanded(child: _buildMetricCard(5, "Robotics")),
+          ],
+        ),
+        Row(
+          spacing: 12,
+          children: [
+            Expanded(child: _buildMetricCard(10, "IoT Solutions")),
+            Expanded(child: _buildMetricCard(20, "Embedded Prototypes")),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMetricCard(int targetValue, String label) {
+    return Container(
       width: 150,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
@@ -55,7 +126,7 @@ class ProjectCard extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Colors.grey.shade600,
+              color: Colors.grey.shade900,
             ),
           ),
         ],
