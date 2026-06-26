@@ -65,8 +65,8 @@ class ServicePage extends StatelessWidget {
                       children: const [
                         Expanded(
                           child: ServiceCard(
-                            icon: Icons.admin_panel_settings,
-                            title: "IoT & Automation",
+                            image: "assets/service/iot.jpeg",
+                            title: "IoT Development",
                             description:
                             "Smart automation system development customized web dashboard solutions embedded device controller firmware design protocols...",
                           ),
@@ -74,8 +74,8 @@ class ServicePage extends StatelessWidget {
                         SizedBox(width: 20),
                         Expanded(
                           child: ServiceCard(
-                            icon: Icons.person,
-                            title: "Robotics Systems",
+                            image: "assets/service/robo.jpeg",
+                            title: "Robotics Development",
                             description:
                             "Autonomous navigation mobile robot design sensor integrated feedback controls hardware prototyping testing",
                           ),
@@ -93,26 +93,26 @@ class ServicePage extends StatelessWidget {
                 children: const [
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.phone_android,
-                      title: "Smart Sensors",
-                      description:
-                      "Environmental data logger ambient tracking system industrial sensor alert real-time metrics dashboards",
+                      image: "assets/service/automation.jpeg",
+                      title: "Smart Automation",
+                      description: "Environmental data logger ambient tracking system industrial sensor alert real-time metrics dashboards",
                     ),
                   ),
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.language,
-                      title: "Embedded Web Solutions",
+                      image: "assets/service/embedded.jpeg",
+                      title: "Embedded System Development",
                       description:
                       "Firebase Hosting integration custom local networks responsive frontend interface",
                     ),
                   ),
                   SizedBox(width: 20),
+
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.business,
-                      title: "Firmware",
+                      image: "assets/service/iot.jpeg",
+                      title: "Fail-Safe System Design",
                       description:
                       "Program microcontrollers and optimize operations.",
                     ),
@@ -120,8 +120,8 @@ class ServicePage extends StatelessWidget {
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.event,
-                      title: "Hardware Setup",
+                      image: "assets/service/innovation.jpeg",
+                      title: "Innovation",
                       description:
                       "Configure circuits and microchips.",
                     ),
@@ -129,8 +129,8 @@ class ServicePage extends StatelessWidget {
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.groups,
-                      title: "Custom UI",
+                      image: "assets/service/dashboard.jpeg",
+                      title: "Dashboard",
                       description:
                       "Design clean screens for management.",
                     ),
@@ -200,8 +200,8 @@ class ServicePage extends StatelessWidget {
                       children: const [
                         Expanded(
                           child: ServiceCard(
-                            icon: Icons.admin_panel_settings,
-                            title: "IoT & Automation",
+                            image: "assets/service/iot.jpeg",
+                            title: "IoT Development",
                             description:
                             "Smart automation system development customized web dashboard solutions embedded device controller firmware design protocols...",
                           ),
@@ -209,8 +209,8 @@ class ServicePage extends StatelessWidget {
                         SizedBox(width: 20),
                         Expanded(
                           child: ServiceCard(
-                            icon: Icons.person,
-                            title: "Robotics Systems",
+                            image: "assets/service/robo.jpeg",
+                            title: "Robotics Development",
                             description:
                             "Autonomous navigation mobile robot design sensor integrated feedback controls hardware prototyping testing",
                           ),
@@ -228,8 +228,8 @@ class ServicePage extends StatelessWidget {
                 children: const [
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.phone_android,
-                      title: "Smart Sensors",
+                      image: "assets/service/automation.jpeg",
+                      title: "Smart Automation",
                       description:
                       "Environmental data logger ambient tracking system industrial sensor alert real-time metrics dashboards",
                     ),
@@ -237,8 +237,8 @@ class ServicePage extends StatelessWidget {
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.language,
-                      title: "Embedded Web Solutions",
+                      image: "assets/service/embedded.jpeg",
+                      title: "Embedded System Development",
                       description:
                       "Firebase Hosting integration custom local networks responsive frontend interface",
                     ),
@@ -246,17 +246,12 @@ class ServicePage extends StatelessWidget {
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.business,
-                      title: "Firmware",
+                      image: "assets/service/iot.jpeg",
+                      title: "Fail-Safe System Design",
                       description:
                       "Program microcontrollers and optimize operations.",
                     ),
                   ),
-                  // FIX: removed a stray trailing `SizedBox(width: 20)` that
-                  // used to sit here with nothing after it. It had no
-                  // matching Expanded on its right, so it just ate 20px of
-                  // width and made these 3 cards slightly narrower/uneven
-                  // compared to every other row in this file.
                 ],
               ),
               const SizedBox(height: 20),
@@ -265,8 +260,8 @@ class ServicePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ServiceCard(
-                        icon: Icons.event,
-                        title: "Hardware Setup",
+                        image: "assets/service/innovation.jpeg",
+                        title: "Innovation",
                         description:
                         "Configure circuits and microchips."
                     ),
@@ -274,8 +269,8 @@ class ServicePage extends StatelessWidget {
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      icon: Icons.groups,
-                      title: "Custom UI",
+                      image: "assets/service/dashboard.jpeg",
+                      title: "Dashboard",
                       description:
                       "Design clean screens for management.",
                     ),
@@ -338,8 +333,8 @@ class ServicePage extends StatelessWidget {
               children: const [
                 Expanded(
                   child: ServiceCard(
-                      icon: Icons.admin_panel_settings,
-                      title: "IoT & Automation",
+                      image: "assets/service/iot.jpeg",
+                      title: "IoT Development",
                       description:
                       "Smart automation system development customized web dashboard solutions embedded device controller firmware design protocols..."
                   ),
@@ -347,8 +342,8 @@ class ServicePage extends StatelessWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: ServiceCard(
-                      icon: Icons.person,
-                      title: "Robotics Systems",
+                      image: "assets/service/robo.jpeg",
+                      title: "Robotics Development",
                       description:
                       "Autonomous navigation mobile robot design sensor integrated feedback controls hardware prototyping testing"
                   ),
@@ -363,8 +358,8 @@ class ServicePage extends StatelessWidget {
               children: const [
                 Expanded(
                   child: ServiceCard(
-                      icon: Icons.phone_android,
-                      title: "Smart Sensors",
+                      image: "assets/service/automation.jpeg",
+                      title: "Smart Automation",
                       description:
                       "Environmental data logger ambient tracking system industrial sensor alert real-time metrics dashboards"
                   ),
@@ -372,8 +367,8 @@ class ServicePage extends StatelessWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: ServiceCard(
-                      icon: Icons.language,
-                      title: "Embedded Web Solutions",
+                      image: "assets/service/embedded.jpeg",
+                      title: "Embedded System Development",
                       description:
                       "Firebase Hosting integration custom local networks responsive frontend interface"
                   ),
@@ -386,8 +381,8 @@ class ServicePage extends StatelessWidget {
               children: [
                 Expanded(
                   child: ServiceCard(
-                    icon: Icons.business,
-                    title: "Firmware",
+                    image: "assets/service/iot.jpeg",
+                    title: "Fail-Safe System Design",
                     description:
                     "Program microcontrollers and optimize operations.",
                   ),
@@ -395,8 +390,8 @@ class ServicePage extends StatelessWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: ServiceCard(
-                    icon: Icons.event,
-                    title: "Hardware Setup",
+                    image: "assets/service/innovation.jpeg",
+                    title: "Innovation",
                     description:
                     "Configure circuits and microchips.",
                   ),
@@ -409,8 +404,8 @@ class ServicePage extends StatelessWidget {
               children: [
                 Expanded(
                   child: ServiceCard(
-                    icon: Icons.groups,
-                    title: "Custom UI",
+                    image: "assets/service/dashboard.jpeg",
+                    title: "Dashboard",
                     description:
                     "Design clean screens for management.",
                   ),
@@ -428,37 +423,28 @@ class ServicePage extends StatelessWidget {
 }
 
 class ServiceCard extends StatelessWidget {
-  final IconData icon;
+  final String image;
   final String title;
   final String description;
 
   const ServiceCard({
     super.key,
-    required this.icon,
+    required this.image,
     required this.title,
     required this.description,
   });
 
   @override
   Widget build(BuildContext context) {
-    // FIX: previously every dimension here (card height, icon size,
-    // icon-box padding, title font) was a fixed constant regardless of
-    // screen size — only the description font used RFont.size(). That
-    // meant a mobile card squeezed into half of a narrow Row still
-    // forced the same 200px height and 20px icon as a wide desktop
-    // card. Now height/icon scale down a step per breakpoint too, so
-    // the whole card feels proportional, not just its description text.
     final double cardHeight = ScreenHelper.isDesktop(context)
         ? 200
         : ScreenHelper.isTablet(context)
         ? 190
         : 170;
     final double iconBoxPadding = ScreenHelper.isDesktop(context) ? 15 : 12;
-    final double iconSize = ScreenHelper.isDesktop(context) ? 20 : 18;
-
     return Container(
       height: cardHeight,
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -467,48 +453,30 @@ class ServiceCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        // alignment: Alignment.bottomCenter,
         children: [
-          Container(
-            padding: EdgeInsets.all(iconBoxPadding),
-            decoration: BoxDecoration(
-              color: AppColor.primary.withOpacity(.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              icon,
-              color: AppColor.primary,
-              size: iconSize,
-            ),
-          ),
-          const SizedBox(height: 25),
-          // FIX: added maxLines/overflow here. A longer title like
-          // "Embedded Web Solutions" could previously wrap to 2 lines on
-          // a narrow mobile card and eat into the description's space
-          // unevenly compared to shorter titles like "Firmware". Capping
-          // to 1 line keeps every card's title block the same height.
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: RFont.size(context, 13, tablet: 14, desktop: 14),
-              color: AppColor.secondary,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 15),
           Expanded(
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(iconBoxPadding),
+              decoration: BoxDecoration(
+                color: AppColor.primary.withOpacity(.09),
+                borderRadius: BorderRadius.circular(18),
+                image: DecorationImage(image: AssetImage(image),fit: BoxFit.cover)
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
             child: Text(
-              description,
+              title,
               textAlign: TextAlign.center,
-              maxLines: 3,
+              maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style:  TextStyle(
-                fontSize: RFont.size(context, 12,tablet: 14,desktop: 14),
-                color: Colors.grey.shade700,
-                height: 1.6,
+              style: TextStyle(
+                fontSize: RFont.size(context, 13, tablet: 14, desktop: 14),
+                color: AppColor.primary,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),

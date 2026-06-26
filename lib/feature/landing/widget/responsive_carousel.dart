@@ -17,6 +17,7 @@ class _ResponsiveCarouselState extends State<ResponsiveCarousel> {
 
   // Aapki images ki list
   final List<String> _carouselImages = [
+    "assets/banner/innovate-build-inspire.jpeg",
     "assets/banner/collage-aword.jpeg",
     "assets/banner/news-paper.jpeg",
     "assets/banner/robo-webnare.jpeg",

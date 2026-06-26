@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sk_robotics/core/utils/responsive_font.dart';
 
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/screen_helper.dart';
@@ -26,7 +27,7 @@ class _EventPageState extends State<EventPage> {
         "Real-Time Sensor Data Processing",
         "Wireless Monitoring & Control Systems"
       ],
-      "image": "https://picsum.photos/400/300?random=1"
+      "image": "assets/about/iot-development.jpeg",
     },
     {
       "title": "Robotic Development",
@@ -38,7 +39,7 @@ class _EventPageState extends State<EventPage> {
         "Embedded Robotics Control",
         "Smart Robotics Applications"
       ],
-      "image": "https://picsum.photos/400/300?random=2"
+      "image": "assets/about/robo-development.jpeg"
     },
     {
       "title": "Smart Automation",
@@ -50,7 +51,7 @@ class _EventPageState extends State<EventPage> {
         "Intelligent Control Platforms",
         "Energy-Efficient Automation"
       ],
-      "image": "https://picsum.photos/400/300?random=3"
+      "image": "assets/about/smart-automation.jpeg"
     },
     {
       "title": "Security Systems",
@@ -62,7 +63,7 @@ class _EventPageState extends State<EventPage> {
         "Emergency Notification Features",
         "Continuous Surveillance Solutions"
       ],
-      "image": "https://picsum.photos/400/300?random=4"
+      "image": "assets/about/security-systems.jpeg"
     },
     {
       "title": "Dashboard Development",
@@ -74,7 +75,7 @@ class _EventPageState extends State<EventPage> {
         "Analytics & Reporting",
         "Responsive User Experience"
       ],
-      "image": "https://picsum.photos/400/300?random=5"
+      "image": "assets/about/dashboard-development.jpeg"
     },
     {
       "title": "Fail-Safe System Design",
@@ -86,7 +87,7 @@ class _EventPageState extends State<EventPage> {
         "Safe Shutdown Procedures",
         "Critical System Protection"
       ],
-      "image": "https://picsum.photos/400/300?random=6"
+      "image": "assets/about/Fail-fafe_img.jpeg"
     },
   ];
   final List<String> _EMHA = [
@@ -100,6 +101,7 @@ class _EventPageState extends State<EventPage> {
     {"name": "RFID", "icon": FontAwesomeIcons.idCard},
     {"name": "IR-Comm", "icon": FontAwesomeIcons.rss},
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -267,12 +269,7 @@ class _EventPageState extends State<EventPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(16)
-                    ),
-                    height: 240, child: Center(child: Icon(Icons.image_not_supported_outlined, size: 100, color: Colors.grey.shade400,)),),
+                  Image.asset(steps[_selectedIndex]["image"]!),
                   const SizedBox(height: 20),
                   Text(
                     steps[_selectedIndex]["title"]!,
@@ -378,12 +375,7 @@ class _EventPageState extends State<EventPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(16)
-                ),
-                height: 180, child: Center(child: Icon(Icons.image_not_supported_outlined, size: 100, color: Colors.grey.shade400,)),),
+              Image.asset(steps[_selectedIndex]["image"]!),
               const SizedBox(height: 16),
               Text(
                 steps[_selectedIndex]["title"]!,
@@ -446,7 +438,7 @@ class _EventPageState extends State<EventPage> {
       runSpacing: 10,
       children: List.generate(_EMHA.length, (idx) {
         return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
             color: Colors.grey.shade50,
             borderRadius: BorderRadius.circular(8),
@@ -455,11 +447,11 @@ class _EventPageState extends State<EventPage> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.check_circle_outline, size: 14, color: AppColor.primary),
+              Icon(Icons.check_circle_outline, size: 20, color: Colors.green.shade700),
               const SizedBox(width: 8),
               Text(
                 _EMHA[idx],
-                style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w500, color: Colors.black87),
+                style:  TextStyle(fontSize: RFont.size(context, 14,tablet: 16,desktop: 18), fontWeight: FontWeight.w500, color: Colors.black87),
               ),
             ],
           ),
@@ -484,11 +476,11 @@ class _EventPageState extends State<EventPage> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              FaIcon(_COMMTECH[idx]["icon"], size: 13, color: AppColor.primary),
+              FaIcon(_COMMTECH[idx]["icon"], size: 20, color: AppColor.primary),
               const SizedBox(width: 10),
               Text(
                 _COMMTECH[idx]["name"],
-                style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: Colors.black87),
+                style:  TextStyle(fontSize: RFont.size(context, 14,tablet: 16,desktop: 18), fontWeight: FontWeight.w500, color: Colors.black87),
               ),
             ],
           ),

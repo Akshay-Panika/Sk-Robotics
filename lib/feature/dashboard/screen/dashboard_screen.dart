@@ -14,6 +14,7 @@ import '../../landing/screen/landing_page.dart';
 import '../../landing/widget/project_card.dart';
 import '../../partner/screen/partner_page.dart';
 import '../../service/sreen/service_page.dart';
+import '../../wcu/screen/wcu_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -243,10 +244,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
               /// 5. Services Matrix Track
               SliverToBoxAdapter(key: _servicesKey, child: const ServicePage()),
-              SliverToBoxAdapter(child: SizedBox(height: ScreenHelper.isMobile(context) ? 40 : 60)),
+              SliverToBoxAdapter(child: SizedBox(height: ScreenHelper.isMobile(context) ? 40 : 100)),
 
               /// 6. Media Gallery Layout
               const SliverToBoxAdapter(child: GalleyScreen()),
+              const SliverToBoxAdapter(child: WcuScreen()),
 
               /// 7. Anchor Node Footer
               SliverToBoxAdapter(key: _contactKey, child: const FooterPage()),

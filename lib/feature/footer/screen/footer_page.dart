@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/responsive_font.dart'; // Using your requested RFont import path
 import '../../../core/utils/screen_helper.dart';
@@ -33,7 +34,7 @@ class FooterPage extends StatelessWidget {
               children: [
                 Expanded(flex: 2, child: _buildBrandInfo(context)),
                 const SizedBox(width: 40),
-                Expanded(child: _buildLinksColumn(context, "IoT & Robotics Services", ["Custom Firmware", "ROS Drone Solutions", "Smart Automation", "PCB Prototyping"])),
+                Expanded(child: _buildLinksColumn(context, "IoT & Robotics Services", ["IOT Development", "Robotics Development", "Smart Automation", "Embedded System Development","Fail-Safe System Design", "Innovation", "Dashboard"])),
                 Expanded(child: _buildLinksColumn(context, "Hardware Labs", ["ESP32 / STM32 Nodes", "Kinematic Robotics", "Edge AI Systems", "Sensor Fusion"])),
                 Expanded(child: _buildContactColumn(context)),
               ],
@@ -44,8 +45,8 @@ class FooterPage extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: _buildLinksColumn(context, "Services", ["Custom Firmware", "ROS Solutions", "Automation"])),
-                Expanded(child: _buildLinksColumn(context, "Labs", ["Microcontrollers", "Robotics", "Edge AI"])),
+                Expanded(child: _buildLinksColumn(context, "IoT & Robotics Services", ["IOT Development", "Robotics Development", "Smart Automation", "Embedded System Development","Fail-Safe System Design", "Innovation", "Dashboard"])),
+                Expanded(child: _buildLinksColumn(context, "Hardware Labs", ["Microcontrollers", "Robotics", "Edge AI"])),
               ],
             ),
             const SizedBox(height: 24),
@@ -163,16 +164,30 @@ class FooterPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          "Engineering Support",
+          "Contacts",
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColor.textPrimary),
         ),
         const SizedBox(height: 12),
         Row(
           children: [
-            const Icon(Icons.terminal_rounded, size: 14, color: AppColor.secondary),
+            const Icon(Icons.phone, size: 14, color: AppColor.primary),
             const SizedBox(width: 8),
             Text(
-              "projects@skrobotics.com",
+              "+91 7370027802",
+              style: TextStyle(
+                fontSize: RFont.size(context, 12.5, desktop: 13),
+                color: AppColor.textPrimary.withOpacity(0.7),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            const Icon(Icons.terminal_rounded, size: 14, color: AppColor.primary),
+            const SizedBox(width: 8),
+            Text(
+              "singhshivam0068@gmail.com",
               style: TextStyle(
                 fontSize: RFont.size(context, 12.5, desktop: 13),
                 color: AppColor.textPrimary.withOpacity(0.7),
@@ -183,10 +198,10 @@ class FooterPage extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            const Icon(Icons.developer_board, size: 14, color: AppColor.primary),
+            const Icon(Icons.home, size: 14, color: AppColor.primary),
             const SizedBox(width: 8),
             Text(
-              "Hardware Lab, India",
+              "Jabalpur,Madhya Pradesh, India",
               style: TextStyle(
                 fontSize: RFont.size(context, 12.5, desktop: 13),
                 color: AppColor.textPrimary.withOpacity(0.7),
@@ -203,16 +218,16 @@ class FooterPage extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildIconLink(Icons.memory_rounded),
+        _buildIconLink(FontAwesomeIcons.instagram),
         const SizedBox(width: 12),
-        _buildIconLink(Icons.lan_outlined),
+        _buildIconLink(FontAwesomeIcons.facebook),
         const SizedBox(width: 12),
-        _buildIconLink(Icons.settings_remote_outlined),
+        _buildIconLink(FontAwesomeIcons.youtube),
       ],
     );
   }
 
-  Widget _buildIconLink(IconData icon) {
+  Widget _buildIconLink(FaIconData icon) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -224,7 +239,7 @@ class FooterPage extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: const Color(0xFFE2E8F0)),
           ),
-          child: Icon(icon, size: 14, color: AppColor.textPrimary.withOpacity(0.8)),
+          child: FaIcon(icon, size: 14, color: AppColor.textPrimary.withOpacity(0.8)),
         ),
       ),
     );
