@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sk_robotics/feature/service/sreen/show_service_details.dart';
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/responsive_font.dart';
 import '../../../core/utils/screen_helper.dart';
@@ -111,7 +112,7 @@ class ServicePage extends StatelessWidget {
 
                   Expanded(
                     child: ServiceCard(
-                      image: "assets/service/iot.jpeg",
+                      image: "assets/service/fail-safe.jpeg",
                       title: "Fail-Safe System Design",
                       description:
                       "Program microcontrollers and optimize operations.",
@@ -246,7 +247,7 @@ class ServicePage extends StatelessWidget {
                   SizedBox(width: 20),
                   Expanded(
                     child: ServiceCard(
-                      image: "assets/service/iot.jpeg",
+                      image: "assets/service/fail-safe.jpeg",
                       title: "Fail-Safe System Design",
                       description:
                       "Program microcontrollers and optimize operations.",
@@ -381,7 +382,7 @@ class ServicePage extends StatelessWidget {
               children: [
                 Expanded(
                   child: ServiceCard(
-                    image: "assets/service/iot.jpeg",
+                    image: "assets/service/fail-safe.jpeg",
                     title: "Fail-Safe System Design",
                     description:
                     "Program microcontrollers and optimize operations.",
@@ -436,51 +437,53 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double cardHeight = ScreenHelper.isDesktop(context)
-        ? 200
-        : ScreenHelper.isTablet(context)
-        ? 190
-        : 170;
+    final double cardHeight = ScreenHelper.isDesktop(context) ? 200
+        : ScreenHelper.isTablet(context) ? 190 : 170;
     final double iconBoxPadding = ScreenHelper.isDesktop(context) ? 15 : 12;
-    return Container(
-      height: cardHeight,
-      padding: const EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          color: AppColor.primary,
+    return InkWell(
+      onTap: () {
+        showServiceDetails(context, title, image);
+      },
+      child: Container(
+        height: cardHeight,
+        padding: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: AppColor.primary,
+          ),
+          borderRadius: BorderRadius.circular(18),
         ),
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: Column(
-        // alignment: Alignment.bottomCenter,
-        children: [
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(iconBoxPadding),
-              decoration: BoxDecoration(
-                color: AppColor.primary.withOpacity(.09),
-                borderRadius: BorderRadius.circular(18),
-                image: DecorationImage(image: AssetImage(image),fit: BoxFit.cover)
+        child: Column(
+          // alignment: Alignment.bottomCenter,
+          children: [
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(iconBoxPadding),
+                decoration: BoxDecoration(
+                  color: AppColor.primary.withOpacity(.09),
+                  borderRadius: BorderRadius.circular(18),
+                  image: DecorationImage(image: AssetImage(image),fit: BoxFit.fill)
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: RFont.size(context, 13, tablet: 14, desktop: 14),
-                color: AppColor.primary,
-                fontWeight: FontWeight.w600,
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: RFont.size(context, 13, tablet: 14, desktop: 14),
+                  color: AppColor.primary,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
