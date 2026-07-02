@@ -11,7 +11,7 @@ class ProjectScreen extends StatelessWidget {
     final bool isTablet = ScreenHelper.isTablet(context);
 
     // Dynamic grid columns configuration based on screen sizes
-    int crossAxisCount = isDesktop ? 3 : (isTablet ? 2 : 1);
+    int crossAxisCount = isDesktop ? 4 : (isTablet ? 3 : 2);
 
     // Mock IoT & Robotics Projects Data Model List
     final List<Map<String, dynamic>> projects = [
@@ -83,9 +83,9 @@ class ProjectScreen extends StatelessWidget {
             itemCount: projects.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              mainAxisExtent: 360, // Bound alignment box parameters
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              mainAxisExtent: 380, // Bound alignment box parameters
             ),
             itemBuilder: (context, index) {
               final project = projects[index];
